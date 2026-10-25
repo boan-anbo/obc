@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const ReaderVersion = "0.1.0"
+const ReaderVersion = "0.2.0"
 const ReaderContract = "openbibliographies.cli.v1"
 
 type Artifact struct {
@@ -67,6 +67,9 @@ type Release struct {
 }
 
 func (r Release) Validate(m Manifest) error {
+	if numericVersion.MatchString(r.MinimumReaderVersion) && !supportsMinimum(r.MinimumReaderVersion) {
+		return fmt.Errorf("this data needs ob >= %s; update the CLI before updating data", r.MinimumReaderVersion)
+	}
 	if !validID.MatchString(r.ID) || r.ReaderContract != ReaderContract || !supportsMinimum(r.MinimumReaderVersion) || !numericVersion.MatchString(r.CLI.ReaderVersion) || r.SemanticsSHA256 != SemanticsSHA256 || r.CLI.Version == "" || !validHash.MatchString(r.CLI.SourceSHA256) || r.CLI.Commit != "sha256:"+r.CLI.SourceSHA256 || r.Generated == "" || r.ClassificationVersion == "" || r.CatalogSchema != "openbibliographies.preview.v4" || r.CatalogSize <= 0 || r.CatalogSize > MaxData || r.UncompressedBundle.Size <= 0 || r.UncompressedBundle.Size > MaxData || !validHash.MatchString(r.UncompressedBundle.SHA256) {
 		return fmt.Errorf("unsupported release identity/reader contract/catalog metadata")
 	}

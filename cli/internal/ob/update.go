@@ -94,7 +94,7 @@ func fetch(ctx context.Context, client *http.Client, u string, max int64) ([]byt
 		return nil, nil, e
 	}
 	req.Header.Set("Accept-Encoding", "identity")
-	req.Header.Set("User-Agent", "openbibliographies-ob/0.1.0")
+	req.Header.Set("User-Agent", "openbibliographies-ob/"+ReaderVersion)
 	r, e := client.Do(req)
 	if e != nil {
 		return nil, nil, e

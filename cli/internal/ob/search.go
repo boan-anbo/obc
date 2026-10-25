@@ -133,7 +133,7 @@ func (x *Index) buildSearch() {
 		if w.Year != nil {
 			year = strconv.Itoa(*w.Year)
 		}
-		docs := []string{w.Title, "", "", w.Venue + " " + year}
+		docs := []string{strings.Join(workTitles(w), " ; "), "", "", w.Venue + " " + year}
 		for f, v := range docs {
 			counts := map[string]int{}
 			tokens := terms
@@ -160,6 +160,9 @@ func (x *Index) buildSearch() {
 		names := []string{}
 		for _, cr := range w.Creators {
 			names = appendUnique(names, cr.Name)
+			if cr.Romanized != "" {
+				names = appendUnique(names, cr.Romanized)
+			}
 			for _, g := range x.Bundle.Retrieval.Authors {
 				matched := false
 				for _, m := range g.Members {
@@ -310,6 +313,15 @@ func (x *Index) lexical(q string) (map[int]float64, []string) {
 		} else if len(words) > 1 && strings.Contains(" "+title[0]+" ", " "+phrase+" ") {
 			boost = 2.5
 		}
+		for _, alias := range workTitles(x.Catalog.Works[doc])[1:] {
+			full := strings.Join(Tokens(alias, true), " ")
+			main := strings.Join(Tokens(titleSeparator.Split(alias, 2)[0], true), " ")
+			if full == phrase || main == phrase {
+				boost = 4
+			} else if boost < 2.5 && len(words) > 1 && strings.Contains(" "+full+" ", " "+phrase+" ") {
+				boost = 2.5
+			}
+		}
 		scores[doc] = score * share * share * boost
 	}
 	return scores, concepts
@@ -367,9 +379,11 @@ func (x *Index) literalMatches(v string, m map[int]float64) map[int]float64 {
 	if m == nil {
 		m = map[int]float64{}
 	}
-	for i, title := range x.Titles {
-		if len(occurrences(title, v)) > 0 {
-			put(m, i, 2)
+	for i, titles := range x.TitleVariants {
+		for _, title := range titles {
+			if len(occurrences(title, v)) > 0 {
+				put(m, i, 2)
+			}
 		}
 	}
 	return m

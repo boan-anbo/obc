@@ -22,6 +22,9 @@
             },
             "role": {
               "type": "string"
+            },
+            "romanized": {
+              "type": "string"
             }
           },
           "required": [
@@ -126,6 +129,31 @@
       "doi": {
         "type": "string",
         "pattern": "^10\\.\\d{4,9}\\/[^\\s\"\u003c\u003e]+$"
+      },
+      "language": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Za-z]{4})?$"
+      },
+      "titleRomanized": {
+        "type": "string",
+        "minLength": 1
+      },
+      "titleEnglish": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "editorial": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "value",
+          "editorial"
+        ],
+        "additionalProperties": false
       }
     },
     "required": [

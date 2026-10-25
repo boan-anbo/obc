@@ -28,21 +28,29 @@ var Formats = []string{"book", "article", "chapter", "review", "other"}
 var WorkTypes = []string{"study", "survey", "reference", "translation", "edition", "source-collection", "catalogue", "collection"}
 
 type Creator struct {
-	Name string `json:"name"`
-	Role string `json:"role"`
+	Name      string `json:"name"`
+	Role      string `json:"role"`
+	Romanized string `json:"romanized,omitempty"`
+}
+type EnglishTitle struct {
+	Value     string `json:"value"`
+	Editorial bool   `json:"editorial"`
 }
 type Work struct {
-	ID       string              `json:"id"`
-	Title    string              `json:"title"`
-	Creators []Creator           `json:"creators"`
-	Year     *int                `json:"year,omitempty"`
-	Venue    string              `json:"venue,omitempty"`
-	Format   string              `json:"format"`
-	WorkType []string            `json:"workType,omitempty"`
-	Labels   map[string][]string `json:"labels"`
-	ISBN     []string            `json:"isbn,omitempty"`
-	DOI      string              `json:"doi,omitempty"`
-	Related  []int               `json:"related,omitempty"`
+	ID             string              `json:"id"`
+	Title          string              `json:"title"`
+	Language       string              `json:"language,omitempty"`
+	TitleRomanized string              `json:"titleRomanized,omitempty"`
+	TitleEnglish   *EnglishTitle       `json:"titleEnglish,omitempty"`
+	Creators       []Creator           `json:"creators"`
+	Year           *int                `json:"year,omitempty"`
+	Venue          string              `json:"venue,omitempty"`
+	Format         string              `json:"format"`
+	WorkType       []string            `json:"workType,omitempty"`
+	Labels         map[string][]string `json:"labels"`
+	ISBN           []string            `json:"isbn,omitempty"`
+	DOI            string              `json:"doi,omitempty"`
+	Related        []int               `json:"related,omitempty"`
 }
 type Term struct {
 	ID         string   `json:"id"`
@@ -103,19 +111,20 @@ type Bundle struct {
 	Retrieval   Retrieval `json:"retrieval"`
 }
 type Index struct {
-	Bundle       Bundle
-	Catalog      Catalog
-	Keys         []map[string]bool
-	Terms        map[string]Term
-	Authors      map[string]map[int]bool
-	Names        map[string]map[int]bool
-	TitleRanks   []int
-	Titles       []string
-	TermNames    map[string][]string
-	Phrases      []Phrase
-	Periods      map[string][]Span
-	TitlePeriods [][]Span
-	Search       *SearchIndex
+	Bundle        Bundle
+	Catalog       Catalog
+	Keys          []map[string]bool
+	Terms         map[string]Term
+	Authors       map[string]map[int]bool
+	Names         map[string]map[int]bool
+	TitleRanks    []int
+	Titles        []string
+	TitleVariants [][]string
+	TermNames     map[string][]string
+	Phrases       []Phrase
+	Periods       map[string][]Span
+	TitlePeriods  [][]Span
+	Search        *SearchIndex
 }
 type Phrase struct {
 	Value string
@@ -356,6 +365,9 @@ func Build(bundle Bundle) (*Index, error) {
 			g, ok := members[Member{w.ID, cr.Name, cr.Role}]
 			key := authorSlug(cr.Name)
 			names := []string{cr.Name}
+			if cr.Romanized != "" {
+				names = appendUnique(names, cr.Romanized)
+			}
 			if ok {
 				key = g.Key
 				names = append(names, g.Name)
@@ -369,6 +381,11 @@ func Build(bundle Bundle) (*Index, error) {
 			}
 		}
 		x.Titles = append(x.Titles, literal(w.Title))
+		variants := []string{}
+		for _, title := range workTitles(w) {
+			variants = appendUnique(variants, literal(title))
+		}
+		x.TitleVariants = append(x.TitleVariants, variants)
 		x.TitlePeriods = append(x.TitlePeriods, intervals(w.Title))
 	}
 	for m := range members {

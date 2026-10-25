@@ -115,12 +115,12 @@ func TestReleaseCompatibilityRejectsFutureReader(t *testing.T) {
 }
 
 func TestNumericReaderVersions(t *testing.T) {
-	for _, v := range []string{"0.0.0", "0.0.1", "0.1.0"} {
+	for _, v := range []string{"0.0.0", "0.0.1", "0.1.0", "0.1.1", "0.2.0"} {
 		if !supportsMinimum(v) {
 			t.Fatal("supported minimum rejected", v)
 		}
 	}
-	for _, v := range []string{"0.1.1", "1.0.0", "00.1.0", "garbage", "0\\a1\\b0"} {
+	for _, v := range []string{"0.2.1", "1.0.0", "00.1.0", "garbage", "0\\a1\\b0"} {
 		if supportsMinimum(v) {
 			t.Fatal("unsupported minimum accepted", v)
 		}

@@ -120,21 +120,24 @@ func Parse(p url.Values) (Query, error) {
 }
 
 type PublicWork struct {
-	ID       string              `json:"id"`
-	Title    string              `json:"title"`
-	Creators []Creator           `json:"creators"`
-	Format   string              `json:"format"`
-	Labels   map[string][]string `json:"labels"`
-	Year     *int                `json:"year,omitempty"`
-	Venue    string              `json:"venue,omitempty"`
-	WorkType []string            `json:"workType,omitempty"`
-	ISBN     []string            `json:"isbn,omitempty"`
-	DOI      string              `json:"doi,omitempty"`
-	Href     string              `json:"href"`
+	ID             string              `json:"id"`
+	Title          string              `json:"title"`
+	Language       string              `json:"language,omitempty"`
+	TitleRomanized string              `json:"titleRomanized,omitempty"`
+	TitleEnglish   *EnglishTitle       `json:"titleEnglish,omitempty"`
+	Creators       []Creator           `json:"creators"`
+	Format         string              `json:"format"`
+	Labels         map[string][]string `json:"labels"`
+	Year           *int                `json:"year,omitempty"`
+	Venue          string              `json:"venue,omitempty"`
+	WorkType       []string            `json:"workType,omitempty"`
+	ISBN           []string            `json:"isbn,omitempty"`
+	DOI            string              `json:"doi,omitempty"`
+	Href           string              `json:"href"`
 }
 
 func Public(w Work) PublicWork {
-	return PublicWork{w.ID, w.Title, w.Creators, w.Format, w.Labels, w.Year, w.Venue, w.WorkType, w.ISBN, w.DOI, "/works/" + w.ID + "/"}
+	return PublicWork{ID: w.ID, Title: w.Title, Language: w.Language, TitleRomanized: w.TitleRomanized, TitleEnglish: w.TitleEnglish, Creators: w.Creators, Format: w.Format, Labels: w.Labels, Year: w.Year, Venue: w.Venue, WorkType: w.WorkType, ISBN: w.ISBN, DOI: w.DOI, Href: "/works/" + w.ID + "/"}
 }
 
 type Concepts struct {

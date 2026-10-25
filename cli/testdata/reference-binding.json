@@ -1,0 +1,46 @@
+{
+  "generation": {
+    "node": "v22.22.1",
+    "icu": "78.2",
+    "unicode": "17.0",
+    "collation": {
+      "locale": "en",
+      "usage": "sort",
+      "sensitivity": "variant",
+      "ignorePunctuation": false,
+      "collation": "default",
+      "numeric": false,
+      "caseFirst": "false"
+    },
+    "sourceOrder": [
+      "preview-catalog.ts",
+      "public-query.ts",
+      "search.ts",
+      "query-intent.ts",
+      "query-ranking.ts",
+      "query-plan.ts",
+      "author-aggregation.ts",
+      "reviewed-author-groups.json",
+      "filter-selection.ts",
+      "query-results.ts",
+      "bibliography-contract.ts"
+    ],
+    "sourceHashes": {
+      "preview-catalog.ts": "702c4e84d1512ba3580f5cdfb1b87fbd337987b17e5096d8ba56fe5386fb8967",
+      "public-query.ts": "bc16b348dbcf1cc6c2b0c7024cd13652caa6adeafeb30e473a00135213616e68",
+      "search.ts": "aea3c65359973792c8becf87ffe70d6cdcf6b166b4bc30fc60e1a1d9f89b61ca",
+      "query-intent.ts": "219c58798a5e00ccfe5153d15c0552d26ef2ef68c58fb20e201d05eddc344df4",
+      "query-ranking.ts": "aa605b80c9ca3ef5e06b6e5c051f0ace2c69e2e7bd88f58d381b238d4764235c",
+      "query-plan.ts": "3eaa7f6c9045a6d87ec88c6401614fa5514839984dc30adbd17c4c96f5279e7a",
+      "author-aggregation.ts": "bd58bec16fdc0b475d3044d92cdef5b6ff7cad4b61888c27863b40d01d6de715",
+      "reviewed-author-groups.json": "1936141e8b367a8714f58fa5651c5f62bc56fd74d54458b7b1c96092aa2fa368",
+      "filter-selection.ts": "db7254bd574ddbd437b2d64120cfa6a3103cd26c760b607493f63c0d40c3cba0",
+      "query-results.ts": "7376f3f40506d684a51609336255ebbb238ee27da55d3420cbe2a8c698d0ae0d",
+      "bibliography-contract.ts": "55d5e9030a04d7e4ca3025be9ba6d5eebd73f86db499390af4afda7b6b5d166a"
+    },
+    "sourceDigestAlgorithm": "SHA256 of UTF-8 source bytes concatenated in sourceOrder"
+  },
+  "catalogSHA256": "1da279e9982ec419e82675ecb518a13a14a71e4c24aa1ef85678d63141351aeb",
+  "authorVersion": "reviewed-authors-20261025-0ae24e59c535a47c4a75797e0190f8c01fcc32e4ec6e24655d6db8cbfdeb7631",
+  "semanticsSHA256": "fb3ecac2995906cd2dc3cdf02a467c358d33380abf7cc23926e7959c1d5587ce"
+}

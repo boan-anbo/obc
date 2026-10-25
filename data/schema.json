@@ -1,0 +1,539 @@
+{
+  "schema": "openbibliographies.data-schemas.v1",
+  "workRecord": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "creators": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "role"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "year": {
+        "type": "integer",
+        "minimum": -9007199254740991,
+        "maximum": 9007199254740991
+      },
+      "venue": {
+        "type": "string"
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "book",
+          "article",
+          "chapter",
+          "review",
+          "other"
+        ]
+      },
+      "workType": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "study",
+            "survey",
+            "reference",
+            "translation",
+            "edition",
+            "source-collection",
+            "catalogue",
+            "collection"
+          ]
+        }
+      },
+      "labels": {
+        "type": "object",
+        "properties": {
+          "discipline": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "region": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "period": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subject": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "topic": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keyword": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "discipline",
+          "region",
+          "period",
+          "subject",
+          "topic",
+          "keyword"
+        ],
+        "additionalProperties": false
+      },
+      "isbn": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^97[89]\\d{10}$"
+        }
+      },
+      "doi": {
+        "type": "string",
+        "pattern": "^10\\.\\d{4,9}\\/[^\\s\"\u003c\u003e]+$"
+      }
+    },
+    "required": [
+      "id",
+      "title",
+      "creators",
+      "format",
+      "labels"
+    ],
+    "additionalProperties": false
+  },
+  "vocabulary": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "schema": {
+        "type": "string",
+        "const": "openbibliographies.vocabulary.v1"
+      },
+      "snapshot": {
+        "type": "string"
+      },
+      "development": {
+        "type": "boolean"
+      },
+      "complete": {
+        "type": "boolean"
+      },
+      "classificationVersion": {
+        "type": "string"
+      },
+      "taxonomy": {
+        "type": "object",
+        "properties": {
+          "discipline": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "region": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "period": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "subject": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "topic": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "keyword": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                },
+                "zh": {
+                  "type": "string"
+                },
+                "zht": {
+                  "type": "string"
+                },
+                "parents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "grouping": {
+                  "type": "boolean",
+                  "const": true
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "type": "number"
+                },
+                "near": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "navigation": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "en",
+                "zh",
+                "zht",
+                "parents"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "discipline",
+          "region",
+          "period",
+          "subject",
+          "topic",
+          "keyword"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "schema",
+      "snapshot",
+      "development",
+      "complete",
+      "classificationVersion",
+      "taxonomy"
+    ],
+    "additionalProperties": false
+  }
+}

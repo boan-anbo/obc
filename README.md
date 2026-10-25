@@ -19,8 +19,9 @@ Download the matching binary and data bundle from [Releases](https://github.com/
 Verify the checksums and place the binary on PATH as `ob` (`ob.exe` on Windows).
 
 The data since 2026-10-26 (20,903 works) needs `ob` 0.2.0 or later. `ob` 0.1.0
-cannot read it and stops with an "unknown field" error, keeping its old data;
-download 0.2.0 from the latest release.
+cannot read it: `ob update` stops with "DATA_ERROR: unsupported release
+identity/reader contract/catalog metadata" and keeps its old data. Download
+0.2.0 from the latest release.
 
 ```sh
 ob update --source https://github.com/boan-anbo/obc/releases/latest/download/cli-manifest.json

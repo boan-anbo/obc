@@ -364,6 +364,9 @@ func Build(bundle Bundle) (*Index, error) {
 		for _, cr := range w.Creators {
 			g, ok := members[Member{w.ID, cr.Name, cr.Role}]
 			key := authorSlug(cr.Name)
+			if cr.Romanized != "" {
+				key = authorSlug(cr.Romanized)
+			}
 			names := []string{cr.Name}
 			if cr.Romanized != "" {
 				names = appendUnique(names, cr.Romanized)

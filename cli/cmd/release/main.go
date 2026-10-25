@@ -28,7 +28,7 @@ import (
 func main() {
 	out := flag.String("out", "dist/release", "new output directory")
 	dataset := flag.String("dataset", "dist/catalog.json.gz", "validated bundle")
-	version := flag.String("version", "0.2.0", "release version")
+	version := flag.String("version", "0.2.1", "release version")
 	publicBase := flag.String("public-base", "/cli", "static URL path prefix; no hostname is invented")
 	assetBase := flag.String("asset-base", "", "optional immutable HTTPS directory for flat release assets")
 	flag.Parse()

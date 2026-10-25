@@ -173,8 +173,8 @@ func (x *Index) scores(query string) map[int]float64 {
 	lex, _ := x.lexical(query)
 	if lex == nil {
 		exact := map[int]float64{}
-		for i, t := range x.Titles {
-			if t == literal(query) {
+		for i := range x.Titles {
+			if x.exactTitle(i, literal(query)) {
 				exact[i] = 6
 			}
 		}
@@ -423,7 +423,7 @@ func (x *Index) scores(query string) map[int]float64 {
 		}
 		bm := soft[i]
 		identity := 0.
-		if x.Titles[i] == literal(query) {
+		if x.exactTitle(i, literal(query)) {
 			identity = math.Min(12, total)
 		}
 		corroborated := 0

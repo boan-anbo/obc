@@ -19,7 +19,7 @@ Download the matching binary and data bundle from [Releases](https://github.com/
 Verify the checksums and place the binary on PATH as `ob` (`ob.exe` on Windows).
 
 The data since 2026-10-26 needs `ob` 0.2.0 or later; 0.2.1 also groups works
-by a Chinese author's romanized name (for example 潘毅 under Pun Ngai). `ob` 0.1.0
+by an author's romanized name. `ob` 0.1.0
 cannot read it: `ob update` stops with "DATA_ERROR: unsupported release
 identity/reader contract/catalog metadata" and keeps its old data. Download
 the latest `ob` from the latest release.

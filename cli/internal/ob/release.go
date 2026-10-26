@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const ReaderVersion = "0.2.0"
+const ReaderVersion = "0.3.0"
 const ReaderContract = "openbibliographies.cli.v1"
 
 type Artifact struct {

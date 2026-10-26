@@ -134,10 +134,11 @@ type PublicWork struct {
 	ISBN           []string            `json:"isbn,omitempty"`
 	DOI            string              `json:"doi,omitempty"`
 	Href           string              `json:"href"`
+	Relations      Relations           `json:"relations,omitempty"`
 }
 
 func Public(w Work) PublicWork {
-	return PublicWork{ID: w.ID, Title: w.Title, Language: w.Language, TitleRomanized: w.TitleRomanized, TitleEnglish: w.TitleEnglish, Creators: w.Creators, Format: w.Format, Labels: w.Labels, Year: w.Year, Venue: w.Venue, WorkType: w.WorkType, ISBN: w.ISBN, DOI: w.DOI, Href: "/works/" + w.ID + "/"}
+	return PublicWork{ID: w.ID, Title: w.Title, Language: w.Language, TitleRomanized: w.TitleRomanized, TitleEnglish: w.TitleEnglish, Creators: w.Creators, Format: w.Format, Labels: w.Labels, Year: w.Year, Venue: w.Venue, WorkType: w.WorkType, ISBN: w.ISBN, DOI: w.DOI, Href: "/works/" + w.ID + "/", Relations: w.Relations}
 }
 
 type Concepts struct {

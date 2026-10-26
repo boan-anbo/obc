@@ -1,6 +1,6 @@
 # Open Bibliographies for China Studies
 
-A bibliography of 20,904 works, with classifications and an offline search CLI.
+A bibliography of 20,905 works, with classifications and an offline search CLI.
 
 Data is in `data/`: `works.jsonl` and `works.csv` contain the same records;
 `vocabulary.json` describes the terms; `schema.json` defines the fields;
@@ -9,7 +9,8 @@ Data is in `data/`: `works.jsonl` and `works.csv` contain the same records;
 Fields: `id`, `title`, `creators` (name, role, optional romanized), `year`,
 `venue`, `format`, `workType`, `labels` (discipline, region, period, subject,
 topic, keyword), `isbn`, `doi`; for non-English works also `language`,
-`titleRomanized` and `titleEnglish` (value, and whether it is our translation).
+`titleRomanized` and `titleEnglish` (value, and whether it is our translation);
+`relations` links versions of a work in other languages by ID.
 IDs are stable number strings. Missing metadata stays missing;
 publication year is separate from the period studied.
 
@@ -18,11 +19,8 @@ publication year is separate from the period studied.
 Download the matching binary and data bundle from [Releases](https://github.com/boan-anbo/obc/releases).
 Verify the checksums and place the binary on PATH as `ob` (`ob.exe` on Windows).
 
-The data since 2026-10-26 needs `ob` 0.2.0 or later; 0.2.1 also groups works
-by an author's romanized name. `ob` 0.1.0
-cannot read it: `ob update` stops with "DATA_ERROR: unsupported release
-identity/reader contract/catalog metadata" and keeps its old data. Download
-the latest `ob` from the latest release.
+The current data needs `ob` 0.3.0 or later. Older versions refuse it and keep
+their existing data; download the latest `ob` from the latest release.
 
 ```sh
 ob update --source https://github.com/boan-anbo/obc/releases/latest/download/cli-manifest.json

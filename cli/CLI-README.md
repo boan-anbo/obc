@@ -26,8 +26,10 @@ immutable HTTPS release URLs; otherwise it prepares a local static layout.
 
 Code: MIT, copyright Bo An (`LICENSE`). Data: CC BY4.0 (`DATA-LICENSE`).
 
-Multilingual data requires ob >= 0.2.0. Query/show JSON preserves the accepted
+Data with work relations requires ob >= 0.3.0. Query/show JSON preserves the accepted
 language, romanized titles/names and English title with its editorial flag.
 These retained variants are searchable. This reader keeps its legacy lexical
-policy; it does not claim browser Fuse parity. Version 0.1.0 rejects this data
-before activating it and retains the previous cache; download 0.2.0 first.
+policy; it does not claim browser Fuse parity. `relations` contains strict
+`{type, work}` objects: `hasVersion` or `isVersionOf` and a public numeric ID.
+Targets and reciprocal links belong to the same snapshot. Versions 0.2.x reject
+this data before activating it and retain the previous cache; download 0.3.0 first.

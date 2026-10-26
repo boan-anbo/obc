@@ -51,6 +51,7 @@ type Work struct {
 	ISBN           []string            `json:"isbn,omitempty"`
 	DOI            string              `json:"doi,omitempty"`
 	Related        []int               `json:"related,omitempty"`
+	Relations      Relations           `json:"relations,omitempty"`
 }
 type Term struct {
 	ID         string   `json:"id"`
@@ -390,6 +391,9 @@ func Build(bundle Bundle) (*Index, error) {
 		}
 		x.TitleVariants = append(x.TitleVariants, variants)
 		x.TitlePeriods = append(x.TitlePeriods, intervals(w.Title))
+	}
+	if e := validateWorkRelations(c.Works, ids); e != nil {
+		return nil, e
 	}
 	for m := range members {
 		i, ok := ids[m.Work]

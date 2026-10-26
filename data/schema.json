@@ -154,6 +154,31 @@
           "editorial"
         ],
         "additionalProperties": false
+      },
+      "relations": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "hasVersion",
+                "isVersionOf"
+              ]
+            },
+            "work": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            }
+          },
+          "required": [
+            "type",
+            "work"
+          ],
+          "additionalProperties": false
+        }
       }
     },
     "required": [

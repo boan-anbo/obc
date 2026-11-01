@@ -1,6 +1,6 @@
 # Open Bibliographies for China Studies
 
-Compiled bibliography and classifications: 20905 works, snapshot `dev-ca097f53a30d11cc`.
+Compiled bibliography and classifications: 21151 works, snapshot `dev-0b092152489c237a`.
 
 - `works.jsonl`: one work per line; `works.csv`: the same records, with arrays encoded as JSON cells.
 - `vocabulary.json`: accepted terms and their relationships.

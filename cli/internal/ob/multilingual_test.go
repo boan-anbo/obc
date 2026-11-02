@@ -135,3 +135,43 @@ func TestMultilingualStrictKnownTypesAndUpdateFailureKeepsCache(t *testing.T) {
 		}
 	}
 }
+
+func TestRomanisedAndIdentityMatches(t *testing.T) {
+	work := func(id, title, language string, creators ...string) Work {
+		w := Work{ID: id, Title: title, Language: language, Labels: map[string][]string{}}
+		for _, c := range creators {
+			w.Creators = append(w.Creators, Creator{Name: c, Role: "author"})
+		}
+		return w
+	}
+	x := &Index{Catalog: Catalog{Works: []Work{
+		work("1", "紅太陽是怎樣升起的", "zh", "高華"),
+		work("2", "How the Red Sun Rose: The Origins", "en", "Gao Hua"),
+		work("3", "文体の変遷", "ja", "高華"),
+		work("4", "Max Weber on China", "en", "Otto"),
+	}}, Names: map[string]map[int]bool{"高华": {0: true, 2: true}, "gao hua": {1: true}, "otto": {3: true}}, Search: &SearchIndex{DF: map[string]int{}}}
+	for _, w := range x.Catalog.Works {
+		x.Titles = append(x.Titles, literal(w.Title))
+		x.TitleVariants = append(x.TitleVariants, []string{literal(w.Title)})
+		x.Romanised = append(x.Romanised, romanisedRecord(w))
+	}
+	found := func(q string, main map[int]float64) map[int]float64 { return x.withRomanised(q, main) }
+	if got := found("hong tai yang", nil); len(got) != 1 || got[0] == 0 {
+		t.Fatal("a title spelled in pinyin", got)
+	}
+	if got := found("gaohua", nil); got[0] == 0 || got[2] != 0 {
+		t.Fatal("a name spelled in pinyin, and no pinyin for a Japanese record", got)
+	}
+	if got := found("高華", nil); got[0] == 0 || got[1] == 0 || got[2] == 0 {
+		t.Fatal("a Han name reaches its literal records and its romanised one", got)
+	}
+	if got := found("Max Weber on China", map[int]float64{}); got[3] == 0 {
+		t.Fatal("an exact title is always found", got)
+	}
+	if got := found("How the Red Sun Rose", nil); got[1] == 0 {
+		t.Fatal("an exact main title is always found", got)
+	}
+	if got := found("no such thing", map[int]float64{}); len(got) != 0 {
+		t.Fatal(got)
+	}
+}

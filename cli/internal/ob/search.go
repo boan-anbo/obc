@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	"openbibliographies/ob/internal/searchnorm"
 )
 
 var stopwords = wordSet("a an and are as at by for from in into is it its of on or the to with 的 与 和 及", false)
@@ -49,7 +51,7 @@ func stem(w string) string {
 }
 func Tokens(s string, query bool) []string {
 	out := []string{}
-	r := []rune(fold(s, false))
+	r := []rune(searchnorm.Normalise(s))
 	for i := 0; i < len(r); {
 		if !unicode.IsLetter(r[i]) && !unicode.IsNumber(r[i]) {
 			i++

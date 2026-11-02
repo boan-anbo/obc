@@ -1,6 +1,6 @@
 # Open Bibliographies for China Studies
 
-A bibliography of 21,383 works, with classifications and an offline search CLI.
+A bibliography of 21,653 works, with classifications and an offline search CLI.
 
 Data is in `data/`: `works.jsonl` and `works.csv` contain the same records;
 `vocabulary.json` describes the terms; `schema.json` defines the fields;
@@ -19,7 +19,7 @@ publication year is separate from the period studied.
 Download the matching binary and data bundle from [Releases](https://github.com/boan-anbo/obc/releases).
 Verify the checksums and place the binary on PATH as `ob` (`ob.exe` on Windows).
 
-The current data needs `ob` 0.3.0 or later. Older versions refuse it and keep
+The current data needs `ob` 0.4.0 or later. Older versions refuse it and keep
 their existing data; download the latest `ob` from the latest release.
 
 ```sh

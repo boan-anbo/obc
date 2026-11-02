@@ -24,7 +24,7 @@ func main() {
 	}
 }
 func run(base, catalog, order, out, overlayPath string) error {
-	x, e := ob.Load(base)
+	x, e := ob.ReadBundle(base)
 	if e != nil {
 		return e
 	}
@@ -41,7 +41,7 @@ func run(base, catalog, order, out, overlayPath string) error {
 		return e
 	}
 	var o ob.AuthorOverlay
-	if e = ob.Decode([]byte(x.Bundle.Retrieval.OverlayJSON), &o); e != nil {
+	if e = ob.Decode([]byte(x.Retrieval.OverlayJSON), &o); e != nil {
 		return e
 	}
 	sha := ob.Digest(c)
@@ -65,7 +65,9 @@ func run(base, catalog, order, out, overlayPath string) error {
 	if e != nil {
 		return e
 	}
-	bundle := x.Bundle
+	bundle := *x
+	// The base bundle may hold older semantics: that is what a rebind moves it off.
+	bundle.Retrieval.SemanticsSHA256 = ob.SemanticsSHA256
 	bundle.Catalog = string(c)
 	bundle.Snapshot = snapshot
 	bundle.Retrieval.CatalogSHA256 = sha

@@ -1,0 +1,601 @@
+{
+ "schema": "openbibliographies.search-vectors.v1",
+ "normalise": [
+  {
+   "input": "紅太陽",
+   "output": "红太阳"
+  },
+  {
+   "input": "红太阳",
+   "output": "红太阳"
+  },
+  {
+   "input": "紅樓夢",
+   "output": "红楼梦"
+  },
+  {
+   "input": "红楼梦",
+   "output": "红楼梦"
+  },
+  {
+   "input": "高華",
+   "output": "高华"
+  },
+  {
+   "input": "高华",
+   "output": "高华"
+  },
+  {
+   "input": "毛澤東",
+   "output": "毛泽东"
+  },
+  {
+   "input": "毛泽东",
+   "output": "毛泽东"
+  },
+  {
+   "input": "國",
+   "output": "国"
+  },
+  {
+   "input": "国",
+   "output": "国"
+  },
+  {
+   "input": "學",
+   "output": "学"
+  },
+  {
+   "input": "学",
+   "output": "学"
+  },
+  {
+   "input": "対",
+   "output": "对"
+  },
+  {
+   "input": "對",
+   "output": "对"
+  },
+  {
+   "input": "对",
+   "output": "对"
+  },
+  {
+   "input": "歴史",
+   "output": "历史"
+  },
+  {
+   "input": "歷史",
+   "output": "历史"
+  },
+  {
+   "input": "历史",
+   "output": "历史"
+  },
+  {
+   "input": "著",
+   "output": "着"
+  },
+  {
+   "input": "着",
+   "output": "着"
+  },
+  {
+   "input": "裏",
+   "output": "里"
+  },
+  {
+   "input": "裡",
+   "output": "里"
+  },
+  {
+   "input": "里",
+   "output": "里"
+  },
+  {
+   "input": "臺灣",
+   "output": "台湾"
+  },
+  {
+   "input": "台灣",
+   "output": "台湾"
+  },
+  {
+   "input": "台湾",
+   "output": "台湾"
+  },
+  {
+   "input": "於",
+   "output": "于"
+  },
+  {
+   "input": "于",
+   "output": "于"
+  },
+  {
+   "input": "髮",
+   "output": "发"
+  },
+  {
+   "input": "發",
+   "output": "发"
+  },
+  {
+   "input": "发",
+   "output": "发"
+  },
+  {
+   "input": "乾",
+   "output": "干"
+  },
+  {
+   "input": "幹",
+   "output": "干"
+  },
+  {
+   "input": "干",
+   "output": "干"
+  },
+  {
+   "input": "為",
+   "output": "为"
+  },
+  {
+   "input": "爲",
+   "output": "为"
+  },
+  {
+   "input": "兌",
+   "output": "兑"
+  },
+  {
+   "input": "兑",
+   "output": "兑"
+  },
+  {
+   "input": "愼",
+   "output": "慎"
+  },
+  {
+   "input": "慎",
+   "output": "慎"
+  },
+  {
+   "input": "芸",
+   "output": "芸"
+  },
+  {
+   "input": "藝",
+   "output": "艺"
+  },
+  {
+   "input": "艺",
+   "output": "艺"
+  },
+  {
+   "input": "峯",
+   "output": "峰"
+  },
+  {
+   "input": "峰",
+   "output": "峰"
+  },
+  {
+   "input": "Ｈｏｗ　ＲＥＤ",
+   "output": "how red"
+  },
+  {
+   "input": "Gāo Huá",
+   "output": "gao hua"
+  },
+  {
+   "input": "Bǎopǔzǐ",
+   "output": "baopuzi"
+  },
+  {
+   "input": "ß",
+   "output": "ß"
+  },
+  {
+   "input": "İstanbul",
+   "output": "istanbul"
+  },
+  {
+   "input": "がくもん",
+   "output": "がくもん"
+  },
+  {
+   "input": "ｶﾞｸ",
+   "output": "ガク"
+  },
+  {
+   "input": "﨑",
+   "output": "崎"
+  },
+  {
+   "input": "神",
+   "output": "神"
+  },
+  {
+   "input": "﨑",
+   "output": "崎"
+  },
+  {
+   "input": "Chén Tuán",
+   "output": "chen tuan"
+  },
+  {
+   "input": "O'Connor",
+   "output": "o'connor"
+  }
+ ],
+ "literal": [
+  {
+   "input": "紅太陽是怎樣升起的：延安整風運動的來龍去脈",
+   "output": "红太阳是怎样升起的 延安整风运动的来龙去脉"
+  },
+  {
+   "input": "近代東アジアにおける文体の変遷：形式と内実の相克を超えて",
+   "output": "近代东アジアにおける文体の变迁 形式と内实の相克を超えて"
+  },
+  {
+   "input": "“唐宋变革”论的由来与发展",
+   "output": "唐宋变革 论的由来与发展"
+  },
+  {
+   "input": "How the Red Sun Rose: The Origins",
+   "output": "how the red sun rose the origins"
+  },
+  {
+   "input": "A/B — C",
+   "output": "a b c"
+  },
+  {
+   "input": "  spaced   out  ",
+   "output": "spaced out"
+  }
+ ],
+ "indexTokens": [
+  {
+   "input": "红太阳",
+   "output": [
+    "红",
+    "太",
+    "阳",
+    "红太",
+    "太阳"
+   ]
+  },
+  {
+   "input": "紅太陽是怎樣升起的",
+   "output": [
+    "红",
+    "太",
+    "阳",
+    "是",
+    "怎",
+    "样",
+    "升",
+    "起",
+    "的",
+    "红太",
+    "太阳",
+    "阳是",
+    "是怎",
+    "怎样",
+    "样升",
+    "升起",
+    "起的"
+   ]
+  },
+  {
+   "input": "高華",
+   "output": [
+    "高",
+    "华",
+    "高华"
+   ]
+  },
+  {
+   "input": "史",
+   "output": [
+    "史"
+   ]
+  }
+ ],
+ "queryTokens": [
+  {
+   "input": "红太阳",
+   "output": [
+    "红太",
+    "太阳"
+   ]
+  },
+  {
+   "input": "紅太陽是怎樣升起的",
+   "output": [
+    "红太",
+    "太阳",
+    "阳是",
+    "是怎",
+    "怎样",
+    "样升",
+    "升起",
+    "起的"
+   ]
+  },
+  {
+   "input": "高華",
+   "output": [
+    "高华"
+   ]
+  },
+  {
+   "input": "史",
+   "output": [
+    "史"
+   ]
+  }
+ ],
+ "romanise": [
+  {
+   "input": "高華",
+   "output": "gao hua"
+  },
+  {
+   "input": "高华",
+   "output": "gao hua"
+  },
+  {
+   "input": "紅太陽",
+   "output": "gong/hong tai yang"
+  },
+  {
+   "input": "曾国藩",
+   "output": "ceng/zeng guo fan"
+  },
+  {
+   "input": "单",
+   "output": "chan/dan/shan"
+  },
+  {
+   "input": "The Xingde 刑德 Texts",
+   "output": "xing de"
+  },
+  {
+   "input": "高华 / 荣新江",
+   "output": "gao hua | rong xin jiang"
+  }
+ ],
+ "pinyinQueries": [
+  {
+   "input": "shanghai",
+   "output": [
+    [
+     "shang",
+     "hai"
+    ]
+   ]
+  },
+  {
+   "input": "xi an",
+   "output": [
+    [
+     "xi",
+     "an"
+    ]
+   ]
+  },
+  {
+   "input": "hong lou meng",
+   "output": [
+    [
+     "hong",
+     "lou",
+     "meng"
+    ]
+   ]
+  },
+  {
+   "input": "gao hua",
+   "output": [
+    [
+     "gao",
+     "hua"
+    ]
+   ]
+  },
+  {
+   "input": "gaohua",
+   "output": [
+    [
+     "gao",
+     "hua"
+    ]
+   ]
+  },
+  {
+   "input": "Gao Hua",
+   "output": [
+    [
+     "gao",
+     "hua"
+    ]
+   ]
+  },
+  {
+   "input": "gāo huá",
+   "output": [
+    [
+     "gao",
+     "hua"
+    ]
+   ]
+  },
+  {
+   "input": "gao1 hua2",
+   "output": [
+    [
+     "gao",
+     "hua"
+    ]
+   ]
+  },
+  {
+   "input": "hongtaiyang",
+   "output": [
+    [
+     "hong",
+     "tai",
+     "yang"
+    ]
+   ]
+  },
+  {
+   "input": "xian",
+   "output": [
+    [
+     "xi",
+     "an"
+    ]
+   ]
+  },
+  {
+   "input": "china",
+   "output": [
+    [
+     "chi",
+     "na"
+    ]
+   ]
+  },
+  {
+   "input": "mao",
+   "output": []
+  },
+  {
+   "input": "lv xun",
+   "output": [
+    [
+     "lu",
+     "xun"
+    ]
+   ]
+  },
+  {
+   "input": "history of china",
+   "output": []
+  },
+  {
+   "input": "zhongguo jindai",
+   "output": [
+    [
+     "zhong",
+     "guo",
+     "jin",
+     "dai"
+    ]
+   ]
+  },
+  {
+   "input": "",
+   "output": []
+  }
+ ],
+ "nameReadings": [
+  {
+   "input": "高华",
+   "output": [
+    "gao hua"
+   ]
+  },
+  {
+   "input": "高華",
+   "output": [
+    "gao hua"
+   ]
+  },
+  {
+   "input": "欧阳修",
+   "output": [
+    "ou yang xiu"
+   ]
+  },
+  {
+   "input": "司马相如",
+   "output": [
+    "si ma xiang ru"
+   ]
+  },
+  {
+   "input": "毛",
+   "output": []
+  },
+  {
+   "input": "长江黄河大桥",
+   "output": []
+  },
+  {
+   "input": "Gao Hua",
+   "output": []
+  }
+ ],
+ "sameForm": [
+  [
+   "高華",
+   "高华"
+  ],
+  [
+   "紅樓夢",
+   "红楼梦"
+  ],
+  [
+   "毛澤東",
+   "毛泽东"
+  ],
+  [
+   "國",
+   "国"
+  ],
+  [
+   "學",
+   "学"
+  ],
+  [
+   "対",
+   "对"
+  ],
+  [
+   "對",
+   "对"
+  ],
+  [
+   "著",
+   "着"
+  ],
+  [
+   "裏",
+   "裡"
+  ],
+  [
+   "臺灣",
+   "台灣",
+   "台湾"
+  ]
+ ],
+ "differentForm": [
+  [
+   "芸",
+   "艺"
+  ],
+  [
+   "が",
+   "か"
+  ],
+  [
+   "高华",
+   "gao hua"
+  ]
+ ]
+}

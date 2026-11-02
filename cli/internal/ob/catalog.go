@@ -14,6 +14,8 @@ import (
 	"strings"
 	"unicode"
 
+	"openbibliographies/ob/internal/searchnorm"
+
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"golang.org/x/text/unicode/norm"
@@ -121,6 +123,7 @@ type Index struct {
 	TitleRanks    []int
 	Titles        []string
 	TitleVariants [][]string
+	Romanised     [][2]string
 	TermNames     map[string][]string
 	Phrases       []Phrase
 	Periods       map[string][]Span
@@ -186,6 +189,22 @@ func Inflate(b []byte) ([]byte, error) {
 	}
 	return b, nil
 }
+// ReadBundle decodes a bundle without building it, so a rebind can open one of older semantics.
+func ReadBundle(path string) (*Bundle, error) {
+	b, e := ReadFile(path)
+	if e != nil {
+		return nil, e
+	}
+	if b, e = Inflate(b); e != nil {
+		return nil, e
+	}
+	var bundle Bundle
+	if e = Decode(b, &bundle); e != nil {
+		return nil, e
+	}
+	return &bundle, nil
+}
+
 func LoadBytes(b []byte) (*Index, error) {
 	b, e := Inflate(b)
 	if e != nil {
@@ -391,6 +410,7 @@ func Build(bundle Bundle) (*Index, error) {
 		}
 		x.TitleVariants = append(x.TitleVariants, variants)
 		x.TitlePeriods = append(x.TitlePeriods, intervals(w.Title))
+		x.Romanised = append(x.Romanised, romanisedRecord(w))
 	}
 	if e := validateWorkRelations(c.Works, ids); e != nil {
 		return nil, e
@@ -465,7 +485,7 @@ func Build(bundle Bundle) (*Index, error) {
 				}
 			}
 			for _, n := range append(append([]string{t.En, t.Zh, t.Zht, t.ID}, t.Aliases...), t.En) {
-				n = strings.TrimSpace(strings.ReplaceAll(lower(norm.NFKC.String(n)), "-", " "))
+				n = termKey(n)
 				x.TermNames[n] = appendUnique(x.TermNames[n], key)
 			}
 		}
@@ -492,29 +512,9 @@ func addID(m map[string]map[int]bool, key string, i int) {
 	m[key][i] = true
 }
 func lower(s string) string { return cases.Lower(language.Und).String(s) }
-func fold(s string, all bool) string {
-	var b strings.Builder
-	for _, r := range norm.NFKD.String(s) {
-		if (all && unicode.Is(unicode.M, r)) || (!all && r >= 0x300 && r <= 0x36f) {
-			continue
-		}
-		b.WriteRune(r)
-	}
-	return lower(norm.NFKC.String(b.String()))
-}
-func literal(s string) string {
-	var b strings.Builder
-	space := true
-	for _, r := range fold(s, true) {
-		if unicode.IsLetter(r) || unicode.IsNumber(r) {
-			b.WriteRune(r)
-			space = false
-		} else if !space {
-			b.WriteByte(' ')
-			space = true
-		}
-	}
-	return strings.TrimSpace(b.String())
+func literal(s string) string { return searchnorm.Literal(s) }
+func termKey(s string) string {
+	return strings.TrimSpace(strings.ReplaceAll(searchnorm.Normalise(s), "-", " "))
 }
 func authorSlug(s string) string {
 	var b strings.Builder

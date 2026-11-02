@@ -14,7 +14,7 @@ import (
 	"openbibliographies/ob/internal/ob"
 )
 
-var version = "0.3.0"
+var version = "0.4.0"
 var commit = "unknown"
 
 const help = `ob — Open Bibliographies offline reader

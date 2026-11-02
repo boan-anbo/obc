@@ -1,0 +1,40 @@
+{
+ "schema": "openbibliographies.search-identity.v1",
+ "note": "Independent of any snapshot. Each work lists its own title forms; names is every name its creators answer to, as recorded, romanized and through a reviewed group. In a case, titles and creators are the expected hits, and order is the expected order of those ids in the results.",
+ "works": [
+  { "id": "weber", "title": "Max Weber on China", "names": ["Otto B. van der Sprenkel"] },
+  { "id": "sun-en", "title": "How the Red Sun Rose: The Origins", "names": ["Gao Hua", "高華"] },
+  { "id": "sun-zh", "title": "紅太陽是怎樣升起的：延安整風運動的來龍去脈", "names": ["高華", "Gao Hua"], "language": "zh" },
+  { "id": "alt", "title": "觀念史研究", "titleRomanized": "Guannianshi yanjiu", "titleEnglish": "Research in conceptual history", "names": ["金觀濤", "Jin Guantao"], "language": "zh" },
+  { "id": "pun", "title": "Made in China", "names": ["Pun Ngai", "Ngai Pun", "潘毅"] },
+  { "id": "qian-by", "title": "國史大綱", "names": ["錢穆"], "language": "zh" },
+  { "id": "qian-title", "title": "錢穆", "names": ["余英時"], "language": "zh" },
+  { "id": "qian-both", "title": "錢穆：評傳", "names": ["錢穆"], "language": "zh" },
+  { "id": "shanghai-exact", "title": "Shanghai", "names": ["Ann Example"] },
+  { "id": "shanghai-en", "title": "Shanghai Modern", "names": ["Leo Lee"] },
+  { "id": "shanghai-zh", "title": "上海史", "names": ["熊月之"], "language": "zh" }
+ ],
+ "cases": [
+  { "query": "Max Weber on China", "titles": ["weber"], "creators": [] },
+  { "query": "MAX WEBER ON CHINA", "titles": ["weber"], "creators": [] },
+  { "query": "  max weber: on china ", "titles": ["weber"], "creators": [] },
+  { "query": "How the Red Sun Rose", "titles": ["sun-en"], "creators": [] },
+  { "query": "How the Red Sun Rose: The Origins", "titles": ["sun-en"], "creators": [] },
+  { "query": "紅太陽是怎樣升起的", "titles": ["sun-zh"], "creators": [] },
+  { "query": "红太阳是怎样升起的", "titles": ["sun-zh"], "creators": [] },
+  { "query": "Guannianshi yanjiu", "titles": ["alt"], "creators": [] },
+  { "query": "Research in conceptual history", "titles": ["alt"], "creators": [] },
+  { "query": "高华", "titles": [], "creators": ["sun-en", "sun-zh"] },
+  { "query": "Gao Hua", "titles": [], "creators": ["sun-en", "sun-zh"] },
+  { "query": "gāo huá", "titles": [], "creators": ["sun-en", "sun-zh"] },
+  { "query": "Ngai Pun", "titles": [], "creators": ["pun"] },
+  { "query": "潘毅", "titles": [], "creators": ["pun"] },
+  { "query": "钱穆", "titles": ["qian-title", "qian-both"], "creators": ["qian-by"], "order": ["qian-title", "qian-both", "qian-by"] },
+  { "query": "Weber", "titles": [], "creators": [] },
+  { "query": "The Origins", "titles": [], "creators": [] },
+  { "query": "Otto", "titles": [], "creators": [] },
+  { "query": "", "titles": [], "creators": [] },
+  { "query": " : ", "titles": [], "creators": [] },
+  { "query": "Shanghai", "titles": ["shanghai-exact"], "creators": [], "order": ["shanghai-exact", "shanghai-en", "shanghai-zh"] }
+ ]
+}

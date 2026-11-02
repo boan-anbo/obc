@@ -10,7 +10,6 @@ import (
 	"unicode/utf16"
 	"unicode/utf8"
 
-	"golang.org/x/text/unicode/norm"
 )
 
 type Error struct {
@@ -297,7 +296,7 @@ func (x *Index) Execute(q Query) (Result, error) {
 		r.Facets[d] = counts
 	}
 	if strings.TrimSpace(q.Q) != "" {
-		key := strings.TrimSpace(strings.ReplaceAll(lower(norm.NFKC.String(q.Q)), "-", " "))
+		key := termKey(q.Q)
 		r.Concepts.Named = append(r.Concepts.Named, x.TermNames[key]...)
 		for _, k := range r.Concepts.Named {
 			for _, near := range x.Terms[k].Near {

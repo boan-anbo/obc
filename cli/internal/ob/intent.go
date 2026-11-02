@@ -146,6 +146,9 @@ type Clause struct {
 }
 
 func (x *Index) scores(query string) map[int]float64 {
+	return x.withRomanised(query, x.directScores(query))
+}
+func (x *Index) directScores(query string) map[int]float64 {
 	if strings.TrimSpace(query) == "" {
 		return nil
 	}

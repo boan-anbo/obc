@@ -120,7 +120,7 @@ func TestNumericReaderVersions(t *testing.T) {
 			t.Fatal("supported minimum rejected", v)
 		}
 	}
-	for _, v := range []string{"0.3.1", "1.0.0", "00.1.0", "garbage", "0\\a1\\b0"} {
+	for _, v := range []string{"0.4.1", "1.0.0", "00.1.0", "garbage", "0\\a1\\b0"} {
 		if supportsMinimum(v) {
 			t.Fatal("unsupported minimum accepted", v)
 		}

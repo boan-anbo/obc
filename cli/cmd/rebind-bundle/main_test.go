@@ -38,7 +38,7 @@ func TestCurrentReviewedOverlayIsBoundAndRetained(t *testing.T) {
 	b, _ = json.Marshal(o)
 	os.WriteFile(overlay, b, 0600)
 	out := filepath.Join(root, "new.json.gz")
-	if e = run(base, catalog, order, out, overlay); e != nil {
+	if e = run(base, catalog, order, out, overlay, false); e != nil {
 		t.Fatal(e)
 	}
 	next, e := ob.Load(out)
@@ -49,11 +49,28 @@ func TestCurrentReviewedOverlayIsBoundAndRetained(t *testing.T) {
 	if e = ob.Decode([]byte(next.Bundle.Retrieval.OverlayJSON), &got); e != nil || got.MappingSHA256 != o.MappingSHA256 {
 		t.Fatal(got, e)
 	}
+	release := filepath.Join(root, "release.json.gz")
+	if e = run(base, catalog, order, release, overlay, true); e == nil {
+		t.Fatal("development overlay accepted for release")
+	}
+	o.Snapshot = "release-" + o.CatalogSHA256[:16]
+	b, _ = json.Marshal(o)
+	os.WriteFile(overlay, b, 0600)
+	if e = run(base, catalog, order, release, overlay, true); e != nil {
+		t.Fatal(e)
+	}
+	settled, e := ob.Load(release)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if settled.Bundle.Snapshot != o.Snapshot || settled.Bundle.Development {
+		t.Fatal("release mode not retained in the bundle")
+	}
 	o.CatalogSHA256 = strings.Repeat("0", 64)
 	b, _ = json.Marshal(o)
 	os.WriteFile(overlay, b, 0600)
 	bad := filepath.Join(root, "bad.json.gz")
-	if e = run(base, catalog, order, bad, overlay); e == nil {
+	if e = run(base, catalog, order, bad, overlay, true); e == nil {
 		t.Fatal("stale overlay accepted")
 	}
 	if _, e = os.Stat(bad); !os.IsNotExist(e) {

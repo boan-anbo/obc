@@ -17,13 +17,14 @@ func main() {
 	order := flag.String("title-order", "", "normal title-order row indices")
 	overlay := flag.String("author-overlay", "", "optional current reviewed public author overlay")
 	out := flag.String("out", "", "create-only output bundle")
+	release := flag.Bool("release", false, "bind to the site's release-mode snapshot")
 	flag.Parse()
-	if e := run(*base, *catalog, *order, *out, *overlay); e != nil {
+	if e := run(*base, *catalog, *order, *out, *overlay, *release); e != nil {
 		fmt.Fprintln(os.Stderr, e)
 		os.Exit(1)
 	}
 }
-func run(base, catalog, order, out, overlayPath string) error {
+func run(base, catalog, order, out, overlayPath string, release bool) error {
 	x, e := ob.ReadBundle(base)
 	if e != nil {
 		return e
@@ -46,6 +47,9 @@ func run(base, catalog, order, out, overlayPath string) error {
 	}
 	sha := ob.Digest(c)
 	snapshot := "dev-" + sha[:16]
+	if release {
+		snapshot = "release-" + sha[:16]
+	}
 	if overlayPath != "" {
 		raw, e := ob.ReadFile(overlayPath)
 		if e != nil {
@@ -70,6 +74,7 @@ func run(base, catalog, order, out, overlayPath string) error {
 	bundle.Retrieval.SemanticsSHA256 = ob.SemanticsSHA256
 	bundle.Catalog = string(c)
 	bundle.Snapshot = snapshot
+	bundle.Development = !release
 	bundle.Retrieval.CatalogSHA256 = sha
 	bundle.Retrieval.TitleOrder = indices
 	bundle.Retrieval.AuthorVersion = o.Version

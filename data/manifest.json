@@ -1,45 +1,45 @@
 {
   "schema": "openbibliographies.data-release.v1",
-  "snapshot": "release-ee8d7fedbf2b3ab5",
+  "snapshot": "release-a745de65aed7bd37",
   "development": false,
   "generated": "2026-11-23",
   "classificationVersion": "v2-20261020",
   "works": 27763,
   "vocabularyTerms": 5245,
-  "catalogSHA256": "ee8d7fedbf2b3ab592dea73232cdb5ea1abdc3cd90639ea9464c4e12ea66c0fe",
+  "catalogSHA256": "a745de65aed7bd37cfa25b44a04ea987db5641246cf488dc930c08e2e3a089df",
   "repository": "boan-anbo/obc",
-  "releaseTag": "data-20261125-ee8d7fedbf2b3ab5",
+  "releaseTag": "data-20261125-a745de65aed7bd37",
   "licenseTerms": "CC-BY-4.0",
   "files": {
     "LICENSE": {
       "bytes": 18657,
       "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/LICENSE"
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/LICENSE"
     },
     "README.md": {
       "bytes": 1377,
-      "sha256": "467bfc47eb430c191173a2ee35889c5912227ff5e97d05f8149b064ff59ed1a2",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/README.md"
+      "sha256": "1e18625b944b6e3cf3868f9545d72cc327a3309961760c4da4c88d6dfa57c28a",
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/README.md"
     },
     "schema.json": {
       "bytes": 14500,
       "sha256": "05fa7f013b4b40acde9369dc899716f646ab8d1eee20f67793e7f6cbf251c7cf",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/schema.json"
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/schema.json"
     },
     "vocabulary.json": {
       "bytes": 618182,
-      "sha256": "d32b38175fc20bc173b1c4c86a8fccb2932d7f4de5f1d6fe1b1c841db5066af4",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/vocabulary.json"
+      "sha256": "930fb39862c660e374dda0dec6f2ae06247b26ac28b4b9c4e1cf993d9ac257ef",
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/vocabulary.json"
     },
     "works.csv": {
-      "bytes": 10171036,
-      "sha256": "f460d1e0dba9d9bf50527b416d9d2aa1a9c96d6504df77ae3cc8e1bee8279408",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/works.csv"
+      "bytes": 10170830,
+      "sha256": "bad91a89096781aaaff24620615b5a270347cf25ee79aac8142ee2d3e4f0eefe",
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/works.csv"
     },
     "works.jsonl": {
-      "bytes": 12689749,
-      "sha256": "654224410b9b9f21f8f0eb7522a1c4ef09d0c13f5d04f34b71ee9ec24e5e6371",
-      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-ee8d7fedbf2b3ab5/works.jsonl"
+      "bytes": 12689543,
+      "sha256": "95bece0fca6997bc67a78ef66387f1205fd2c02161631ea128b6777288f24d5f",
+      "url": "https://github.com/boan-anbo/obc/releases/download/data-20261125-a745de65aed7bd37/works.jsonl"
     }
   }
 }

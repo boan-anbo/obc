@@ -1,6 +1,6 @@
 # Open Bibliographies for China Studies
 
-A bibliography of 27,763 works, with classifications and an offline search CLI.
+A bibliography of 27,788 works, with classifications and an offline search CLI.
 
 Data is in `data/`: `works.jsonl` and `works.csv` contain the same records;
 `vocabulary.json` describes the terms; `schema.json` defines the fields;
